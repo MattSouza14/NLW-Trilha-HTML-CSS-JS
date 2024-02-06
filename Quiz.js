@@ -1,3 +1,4 @@
+//Array para perguntas e respostas
 const perguntas =[
         {
             pergunta: "Qual é a forma correta de declarar uma variável em JavaScript?",
@@ -93,16 +94,36 @@ const perguntas =[
     const quiz = document.querySelector('#quiz')
     const template = document.querySelector('template')
 
+    const corretas = new Set()
+    const totalPerguntas = perguntas.length
+    const mostrarTotal = document.querySelector('#acertos span')
+    mostrarTotal.textContent = corretas.size + ' de ' + totalPerguntas
+
+
+
+//Estrutura de repetição para mostrar as perguntas
     for(const item of perguntas){
         console.log(item.pergunta)
 
         
         const QuizItem = template.content.cloneNode(true)
         QuizItem.querySelector('h3').textContent = item.pergunta
-        
+//Estrutura de repetição para mostrar as opções de respostas
         for(let resposta of item.respostas){
             const dt = QuizItem.querySelector('dl dt').cloneNode(true)
             dt.querySelector('span').textContent= resposta
+            dt.querySelector('input').setAttribute('name', 'pergunta-' + perguntas.indexOf(item))
+            dt.querySelector('input').value = item.respostas.indexOf(resposta)
+            dt.querySelector('input').onchange = (event) => {
+                const estaCorreta = event.target.value == item.correta
+                
+                corretas.delete(item)
+                if(estaCorreta){
+                    corretas.add(item)
+                }
+                //alert(corretas.size)
+                mostrarTotal.textContent = corretas.size + ' de ' + totalPerguntas
+            }
 
             QuizItem.querySelector('dl').appendChild(dt)
         }

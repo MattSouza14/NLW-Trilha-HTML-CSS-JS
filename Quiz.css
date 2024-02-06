@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+*, :root {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Inter', sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+    /*1 propiedade aplica em todos os lados
+    2 propiedades aplica top e bottom e lados
+    3 propiedades top lados bottom*/
+    
+main {
+    padding: 20px;
+    max-width: 640px;
+    margin: 0 auto 30px;
+}
+#acertos {
+    text-align: center;
+    background-color: #A3E635;
+    /* Posição */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    /*Preenchimento*/
+    padding: 12px;
+}
